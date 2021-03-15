@@ -15,6 +15,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @stack('css')
 </head>
 <body>
     <div id="app" class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -35,7 +38,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('assets/scripts/main.js') }}" defer></script>
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    <script src="{{ asset('assets/scripts/main.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    @stack('js')
 </body>
 </html>
