@@ -55,11 +55,20 @@
                                         <i class="fas fa-edit"></i>
                                         <span>Edit</span>
                                     </a>
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash-alt"></i>
-                                        <span>Delete</span>
-                                    </button>
+
+                                    @if ($role->deletable == true)
+                                        <button type="button"
+                                        onclick="deleteData({{ $role->id }})"
+                                            class="btn btn-danger btn-sm"
+                                        >
+                                            <i class="fas fa-trash-alt"></i>
+                                            <span>Delete</span>
+                                        </button>
+                                        <form id="delete-form-{{ $role->id }}" method="POST" action="{{ route('app.roles.destroy', $role->id) }}" style="display: none">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
