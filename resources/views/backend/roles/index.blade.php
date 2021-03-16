@@ -14,10 +14,10 @@
             <div>Roles</div>
         </div>
         <div class="page-title-actions">
-            <button type="button" data-toggle="tooltip" title="Example Tooltip"
-                data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
-                <i class="fa fa-star"></i>
-            </button>
+            <a href="{{ route('app.roles.create') }}" class="btn-shadow mr-3 btn btn-primary">
+                <i class="fa fa-plus-circle"></i>
+                Create Role
+            </a>
         </div>
     </div>
 </div>
