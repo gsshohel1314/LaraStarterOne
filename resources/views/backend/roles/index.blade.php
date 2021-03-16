@@ -13,12 +13,14 @@
             </div>
             <div>Roles</div>
         </div>
-        <div class="page-title-actions">
-            <a href="{{ route('app.roles.create') }}" class="btn-shadow mr-3 btn btn-primary">
-                <i class="fa fa-plus-circle"></i>
-                Create Role
-            </a>
-        </div>
+        @if (Auth::user()->hasPermission('app.role.create'))
+            <div class="page-title-actions">
+                <a href="{{ route('app.roles.create') }}" class="btn-shadow mr-3 btn btn-primary">
+                    <i class="fa fa-plus-circle"></i>
+                    Create Role
+                </a>
+            </div>
+        @endif
     </div>
 </div>
 
@@ -50,24 +52,28 @@
                                 </td>
                                 <td class="text-center">{{ $role->updated_at->diffForHumans() }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('app.roles.edit', $role->id) }}"
-                                        class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                        <span>Edit</span>
-                                    </a>
+                                    @if (Auth::user()->hasPermission('app.role.create'))
+                                        <a href="{{ route('app.roles.edit', $role->id) }}"
+                                            class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                            <span>Edit</span>
+                                        </a>
+                                    @endif
 
-                                    @if ($role->deletable == true)
-                                        <button type="button"
-                                        onclick="deleteData({{ $role->id }})"
-                                            class="btn btn-danger btn-sm"
-                                        >
-                                            <i class="fas fa-trash-alt"></i>
-                                            <span>Delete</span>
-                                        </button>
-                                        <form id="delete-form-{{ $role->id }}" method="POST" action="{{ route('app.roles.destroy', $role->id) }}" style="display: none">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
+                                    @if (Auth::user()->hasPermission('app.role.create'))
+                                        @if ($role->deletable == true)
+                                            <button type="button"
+                                            onclick="deleteData({{ $role->id }})"
+                                                class="btn btn-danger btn-sm"
+                                            >
+                                                <i class="fas fa-trash-alt"></i>
+                                                <span>Delete</span>
+                                            </button>
+                                            <form id="delete-form-{{ $role->id }}" method="POST" action="{{ route('app.roles.destroy', $role->id) }}" style="display: none">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        @endif
                                     @endif
                                 </td>
                             </tr>

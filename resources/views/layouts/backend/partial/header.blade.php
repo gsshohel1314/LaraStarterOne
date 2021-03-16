@@ -73,7 +73,7 @@
                                 {{ Auth::user()->name }}
                             </div>
                             <div class="widget-subheading">
-                                User Role
+                                {{ Auth::user()->role->name }}
                             </div>
                         </div>
                     </div>
