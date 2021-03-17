@@ -14,7 +14,7 @@
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="pe-7s-check icon-gradient bg-mean-fruit">
+                <i class="pe-7s-users icon-gradient bg-mean-fruit">
                 </i>
             </div>
             <div>{{ isset($user) ? 'Edit' : 'Create' }} User</div>
@@ -65,7 +65,7 @@
 
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="" required>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="" {{ !isset($user) ? 'required' : '' }}>
     
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -76,7 +76,7 @@
 
                             <div class="form-group">
                                 <label for="confirm_password">Confirm Password</label>
-                                <input id="confirm_password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" value="" required>
+                                <input id="confirm_password" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" value="" {{ !isset($user) ? 'required' : '' }}>
     
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -97,8 +97,9 @@
                             <div class="form-group">
                                 <label for="role">Select Role</label>
                                 <select id="role" class="js-example-basic-single form-control @error('role') is-invalid @enderror" name="role" value="" required>
+                                    <option value="">Select User Role</option>
                                     @foreach ($roles as $key=>$role )
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        <option value="{{ $role->id }}" @isset($user) {{ $user->role->id == $role->id ? 'selected' : '' }} @endisset >{{ $role->name }}</option>
                                     @endforeach
                                 </select>
     
@@ -111,7 +112,7 @@
 
                             <div class="form-group">
                                 <label for="avatar">User Image</label>
-                                <input type="file" id="avatar" class="dropify form-control @error('avatar') is-invalid @enderror" name="avatar" value="" required>
+                                <input type="file" id="avatar" class="dropify form-control @error('avatar') is-invalid @enderror" name="avatar" data-default-file="{{ isset($user) ? $user->getFirstMediaUrl('avatar') : '' }}" {{ !isset($user) ? 'required' : '' }}>
     
                                 @error('avatar')
                                     <span class="text-danger" role="alert">
@@ -122,7 +123,7 @@
 
                             <div class="form-group">
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="status" name="status">
+                                    <input type="checkbox" class="custom-control-input" id="status" name="status" @isset($user) {{ $user->status == true ? 'checked' : '' }} @endisset>
                                     <label class="custom-control-label" for="status">Status</label>
                                 </div>
 
