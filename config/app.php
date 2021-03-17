@@ -57,6 +57,8 @@ return [
     // 'asset_url' => env('ASSET_URL', null),
     'asset_url' => 'http://localhost/LaraStarterOne/public',
 
+    'placeholder' => 'https://via.placeholder.com/',
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

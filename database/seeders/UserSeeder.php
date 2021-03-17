@@ -20,14 +20,16 @@ class UserSeeder extends Seeder
             'role_id' => Role::where('slug', 'admin')->first()->id,
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make(12345678)
+            'password' => Hash::make(12345678),
+            'status' => true
         ]);
 
         User::updateOrCreate([
             'role_id' => Role::where('slug', 'user')->first()->id,
             'name' => 'User',
             'email' => 'user@gmail.com',
-            'password' => Hash::make(12345678)
+            'password' => Hash::make(12345678),
+            'status' => true
         ]);
     }
 }
