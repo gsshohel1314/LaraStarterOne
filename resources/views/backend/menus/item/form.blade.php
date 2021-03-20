@@ -27,7 +27,7 @@
 
 <div class="row">
     <div class="col-12">
-        <form method="POST" action="{{ isset($menuItem) ? route('app.menus.update', $menuId->id) : route('app.menus.item.store', $menuId->id) }}">
+        <form method="POST" action="{{ isset($menuItem) ? route('app.menus.item.update', ['id'=>$menuId->id, 'itemId'=>$menuItem->id]) : route('app.menus.item.store', $menuId->id) }}">
             @csrf
             @isset($menuItem)
                 @method('PUT')
@@ -41,8 +41,8 @@
                             <div class="form-group">
                                 <label for="type">Type</label>
                                 <select class="custom-select @error('type') is-invalid @enderror" name="type" id="type" onchange="setItemType()">
-                                    <option value="item">Menu Item</option>
-                                    <option value="divider">Divider</option>
+                                    <option value="item" @isset($menuItem) {{ $menuItem->type == 'item' ? 'selected' : '' }} @endisset>Menu Item</option>
+                                    <option value="divider" @isset($menuItem) {{ $menuItem->type == 'divider' ? 'selected' : '' }} @endisset>Divider</option>
                                 </select>
 
                                 @error('type')
@@ -79,7 +79,7 @@
 
                                 <div class="form-group">
                                     <label for="url">URL for the menu item</label>
-                                    <input id="url" type="text" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ $menuItem->url ?? old('url') }}" required autofocus>
+                                    <input id="url" type="text" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ $menuItem->url ?? old('url') }}">
         
                                     @error('url')
                                         <span class="invalid-feedback" role="alert">
@@ -91,8 +91,8 @@
                                 <div class="form-group">
                                     <label for="target">Open in</label>
                                     <select class="custom-select @error('target') is-invalid @enderror" name="target" id="target">
-                                        <option value="_self">Same Tab/Window</option>
-                                        <option value="_blank">New Tab/Window</option>
+                                        <option value="_self" @isset($menuItem) {{ $menuItem->target == '_self' ? 'selected' : '' }} @endisset>Same Tab/Window</option>
+                                        <option value="_blank" @isset($menuItem) {{ $menuItem->target == '_blank' ? 'selected' : '' }} @endisset>New Tab/Window</option>
                                     </select>
     
                                     @error('target')
@@ -106,7 +106,7 @@
                                     <label for="icon_class">Icon class for menu item <a target="_blank"
                                         href="https://fontawesome.com/">(Use a Fontawesome Font Class)</a>
                                     </label>
-                                    <input id="icon_class" type="text" class="form-control @error('icon_class') is-invalid @enderror" name="icon_class" value="{{ $menuItem->icon_class ?? old('icon_class') }}" required autofocus>
+                                    <input id="icon_class" type="text" class="form-control @error('icon_class') is-invalid @enderror" name="icon_class" value="{{ $menuItem->icon_class ?? old('icon_class') }}">
         
                                     @error('icon_class')
                                         <span class="invalid-feedback" role="alert">
