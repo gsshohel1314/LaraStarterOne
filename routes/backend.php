@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\BackupController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\MenuController;
 use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\RoleController;
@@ -40,6 +41,10 @@ Route::put('profile/security',[ProfileController::class, 'updatePassword'])->nam
 
 // Pages
 Route::resource('pages', PageController::class);
+
+// Menus
+Route::resource('menus', MenuController::class)->except(['show']);
+
 
 
 
