@@ -15,6 +15,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('backend/main.css') }}" rel="stylesheet">
+    {{-- custom css --}}
+    <link href="{{ asset('backend/assets/css/custom.css') }}" rel="stylesheet">
+    @stack('css')
 </head>
 <body>
     <div id="app" class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -33,7 +36,10 @@
     </div>
 
     <!-- Scripts -->
-    <script type="text/javascript" src="{{ asset('backend/assets/scripts/main.js') }}"></script>
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    <script src="{{ asset('backend/assets/js/jquery-3.5.1.js') }}"></script>
+    <script src="{{ asset('backend/assets/scripts/main.js') }}"></script>
+    {{-- Cusotm js --}}
+    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+    @stack('js')
 </body>
 </html>
