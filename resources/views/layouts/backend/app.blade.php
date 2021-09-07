@@ -15,6 +15,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('backend/main.css') }}" rel="stylesheet">
+    <!--toastr iziToast-->
+    <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
     {{-- custom css --}}
     <link href="{{ asset('backend/assets/css/custom.css') }}" rel="stylesheet">
     @stack('css')
@@ -36,8 +38,11 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('backend/assets/js/jquery-3.5.1.js') }}"></script>
     <script src="{{ asset('backend/assets/scripts/main.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <!--toastr iziToast-->
+    <script src="{{asset('js/iziToast.js') }}"></script>
+    @include('vendor.lara-izitoast.toast')
     {{-- Cusotm js --}}
     <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
     @stack('js')

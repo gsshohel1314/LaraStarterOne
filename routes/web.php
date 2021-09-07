@@ -30,5 +30,5 @@ Route::group(['as'=>'app.', 'prefix'=>'app', 'middleware'=>['auth']] ,function()
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
     // Roles
-    Route::resource('roles', RoleController::class);
+    Route::resource('roles', RoleController::class)->except(['show']);
 });
