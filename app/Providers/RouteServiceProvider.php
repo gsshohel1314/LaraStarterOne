@@ -46,6 +46,11 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
+            // backend.php file use for backend related routes.
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/backend.php'));
         });
     }
 

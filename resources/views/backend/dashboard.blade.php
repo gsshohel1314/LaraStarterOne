@@ -8,7 +8,14 @@
                 <i class="pe-7s-car icon-gradient bg-mean-fruit">
                 </i>
             </div>
-            <div>Analytics Dashboard
+            <div>
+                {{-- This blade detective create in appServiceProvider --}}
+                @checkRole('admin')
+                    Admin Dashboard (Hi Admin)
+                @else
+                    Dashboard
+                @endcheckRole
+            
                 <div class="page-title-subheading">This is an example dashboard created using
                     build-in elements and components.
                 </div>
