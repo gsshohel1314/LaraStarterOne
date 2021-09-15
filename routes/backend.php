@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\DashboardController;
 
 /*
@@ -21,4 +22,7 @@ Route::group(['as'=>'app.', 'prefix'=>'app', 'middleware'=>['auth']] ,function()
 
     // Roles
     Route::resource('roles', RoleController::class)->except(['show']);
+
+    // Users
+    Route::resource('users', UserController::class);
 });

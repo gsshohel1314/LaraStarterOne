@@ -56,6 +56,9 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    // custom placeholder for image
+    'placeholderImage' => 'https://via.placeholder.com/',
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
