@@ -77,7 +77,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        Gate::authorize('app.user.show');
+        return view('backend.users.show', compact('user'));
     }
 
     /**

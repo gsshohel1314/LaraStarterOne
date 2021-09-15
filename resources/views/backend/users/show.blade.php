@@ -1,21 +1,21 @@
-@extends('layouts.backend.master')
+@extends('layouts.backend.app')
 
 @section('content')
 <div class="app-page-title">
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="pe-7s-user icon-gradient bg-mean-fruit">
+                <i class="pe-7s-users icon-gradient bg-mean-fruit">
                 </i>
             </div>
-            <div>User (name: {{ $user->name }})</div>
+            <div>User <code>({{ $user->name }})</code> </div>
         </div>
         <div class="page-title-actions">
-            <a href="{{ route('backend.users.edit', $user->id) }}" class="btn-shadow mr-3 btn btn-primary">
+            <a href="{{ route('app.users.edit', $user->id) }}" class="btn-shadow mr-3 btn btn-primary">
                 <i class="fa fa-edit"></i>
                 Edit
             </a>
-            <a href="{{ route('backend.users.index') }}" class="btn-shadow mr-3 btn btn-danger">
+            <a href="{{ route('app.users.index') }}" class="btn-shadow mr-3 btn btn-danger">
                 <i class="fa fa-arrow-circle-left"></i>
                 Back to list
             </a>
@@ -27,7 +27,7 @@
     <div class="col-md-2">
         <div class="main-card mb-3 card">
             <div class="card-body">
-                <img src="{{ isset($user->image) ? asset('storage/user/'.$user->image) : config('app.placeholderImage').'160.png' }}" class="img-fluid img-thumbnail" alt="User Image">
+                <img src="{{ isset($user) ? $user->getFirstMediaUrl('image') : config('app.placeholderImage').'160.png' }}" class="img-fluid img-thumbnail" alt="User Image">
             </div>
         </div>
     </div>
