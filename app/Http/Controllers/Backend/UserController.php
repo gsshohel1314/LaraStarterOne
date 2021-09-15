@@ -88,7 +88,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        Gate::authorize('app.user.edit');
+        $roles = Role::all();
+        return view('backend.users.form', compact('roles', 'user'));
     }
 
     /**
@@ -100,7 +102,30 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        Gate::authorize('app.user.edit');
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+            'role' => 'required',
+            'password' => 'nullable|confirmed|string|min:8',
+            'image' => 'nullable|image',
+        ]);
+
+        $user->update([
+            'role_id' => $request->role,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => isset($request->password) ? Hash::make($request->password) : $user->password,
+            'status' => $request->filled('status')
+        ]);
+
+        // upload images
+        if ($request->hasFile('image')) {
+            $user->addMedia($request->image)->toMediaCollection('image');
+        }
+
+        notify()->success("User Updated", "Success");
+        return back();
     }
 
     /**

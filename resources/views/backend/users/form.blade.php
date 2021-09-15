@@ -109,7 +109,7 @@
 
                             <div class="form-group">
                                 <label for="image">Image (Only Image are allowed)</label>
-                                <input type="file" name="image" id="image" class="dropify form-control @error('image') is-invalid @enderror" data-default-file="{{ isset($user->image) ? asset('storage/user/'.$user->image) : ''}}" required>
+                                <input type="file" name="image" id="image" class="dropify form-control @error('image') is-invalid @enderror" data-default-file="{{ isset($user) ? $user->getFirstMediaUrl('image') : ''}}" {{ !isset($user) ? 'required' : '' }}>
         
                                 @error('image')
                                     <span class="text-danger" role="alert">
