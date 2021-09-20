@@ -63,6 +63,12 @@
                         Backups
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('app.setting.general.index') }}" class="{{ Request::is('app/setting*') ? 'mm-active' : '' }}">
+                        <i class="metismenu-icon pe-7s-config"></i>
+                        Settings
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

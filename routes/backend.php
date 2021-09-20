@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\BackupController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,15 @@ Route::group(['as'=>'app.', 'prefix'=>'app', 'middleware'=>['auth']] ,function()
     Route::resource('backup', BackupController::class)->only(['index', 'store', 'destroy']);
     Route::get('backup/{file_name}', [BackupController::class, 'download'])->name('backup.download');
     Route::delete('backup', [BackupController::class, 'clean'])->name('backup.clean');
+
+    // Settings
+    Route::group(['as'=>'setting.', 'prefix'=>'setting'], function(){
+        // General Setting
+        Route::get('general', [SettingController::class, 'generalIndex'])->name('general.index');
+        Route::put('general', [SettingController::class, 'generalUpdate'])->name('general.update');
+
+        // Appearance Setting
+        Route::get('appearance', [SettingController::class ,'appearanceIndex'])->name('appearance.index');
+        Route::put('appearance', [SettingController::class ,'appearanceUpdate'])->name('appearance.update');
+    });
 });

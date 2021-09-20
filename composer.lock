@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c9b9736ff8f8670c2f38adf62f39496",
+    "content-hash": "731a70e0c3aa37ec31c424bb48107ffc",
     "packages": [
         {
             "name": "appslabke/lara-izitoast",
@@ -171,6 +171,73 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "browner12/helpers",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/browner12/helpers.git",
+                "reference": "cdf34b5863ea13949947f6c013e8b78d3aefdc5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/browner12/helpers/zipball/cdf34b5863ea13949947f6c013e8b78d3aefdc5d",
+                "reference": "cdf34b5863ea13949947f6c013e8b78d3aefdc5d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0",
+                "scrutinizer/ocular": "~1.1",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "suggest": {
+                "moneyphp/money": "Money value object."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "browner12\\helpers\\HelperServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "browner12\\helpers\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Brown",
+                    "email": "browner12@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "generic helpers",
+            "homepage": "https://github.com/browner12/helpers",
+            "keywords": [
+                "browner12",
+                "helpers"
+            ],
+            "support": {
+                "issues": "https://github.com/browner12/helpers/issues",
+                "source": "https://github.com/browner12/helpers/tree/v3.3.0"
+            },
+            "time": "2020-12-08T15:46:07+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -926,6 +993,64 @@
                 "source": "https://github.com/guzzle/psr7/tree/2.0.0"
             },
             "time": "2021-06-30T20:03:07+00:00"
+        },
+        {
+            "name": "imliam/laravel-env-set-command",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ImLiam/laravel-env-set-command.git",
+                "reference": "be51ce036f8d5c935a5bb2d21768831a4efd0d17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ImLiam/laravel-env-set-command/zipball/be51ce036f8d5c935a5bb2d21768831a4efd0d17",
+                "reference": "be51ce036f8d5c935a5bb2d21768831a4efd0d17",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ImLiam\\EnvironmentSetCommand\\EnvironmentSetCommandServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ImLiam\\EnvironmentSetCommand\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Liam Hammett",
+                    "email": "liam@liamhammett.com",
+                    "homepage": "https://liamhammett.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Set a .env file variable from the command line",
+            "homepage": "https://github.com/imliam/laravel-env-set-command",
+            "keywords": [
+                "artisan",
+                "env",
+                "environment",
+                "imliam",
+                "laravel-env-set-command",
+                "variables"
+            ],
+            "support": {
+                "issues": "https://github.com/ImLiam/laravel-env-set-command/issues",
+                "source": "https://github.com/ImLiam/laravel-env-set-command/tree/v1.0.0"
+            },
+            "time": "2018-07-13T21:19:43+00:00"
         },
         {
             "name": "intervention/image",

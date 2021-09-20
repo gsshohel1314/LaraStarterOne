@@ -1,6 +1,8 @@
 <div class="app-header header-shadow">
     <div class="app-header__logo">
-        <div class="logo-src"></div>
+        <div class="logo-src">
+            <img src="{{ asset('storage/'.setting('site_logo')) }}" width="97px" height="23px" alt="Logo">
+        </div>
         <div class="header__pane ml-auto">
             <div>
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -67,7 +69,7 @@
 
                                     <a href="{{ route('app.profile.security.index') }}" tabindex="0" class="dropdown-item"><i class="pe-7s-lock mr-2"></i>Change Password</a>
 
-                                    <a href="#" tabindex="0" class="dropdown-item"><i class="pe-7s-tools mr-2"></i>Settings</a>
+                                    <a href="{{ route('app.setting.general.index') }}" tabindex="0" class="dropdown-item"><i class="pe-7s-tools mr-2"></i>Settings</a>
 
                                     <div tabindex="-1" class="dropdown-divider"></div>
                                     <button type="button" tabindex="0" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
