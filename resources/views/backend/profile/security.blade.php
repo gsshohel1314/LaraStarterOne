@@ -1,4 +1,4 @@
-@extends('layouts.backend.master')
+@extends('layouts.backend.app')
 @push('css')
 @endpush
 @section('content')
@@ -15,7 +15,7 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <form action="{{ route('backend.profile.password.update') }}" method="POST">
+        <form id="securityForm" action="{{ route('app.profile.security.update') }}" method="POST">
             @csrf
             @method('PUT') 
             <div class="row">
@@ -50,6 +50,11 @@
                                 <label for="password_confirmation">Confirm Password</label>
                                 <input id="password_confirmation" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required>
                             </div>
+
+                            <button type="button" class="btn btn-danger" onClick="resetForm('securityForm')">
+                                <i class="fas fa-redo"></i>
+                                <span>Reset</span>
+                            </button>
                             
                             <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-circle-up"></i> Update</button>
                         </div>

@@ -33,8 +33,8 @@ Route::group(['as'=>'app.', 'prefix'=>'app', 'middleware'=>['auth']] ,function()
     Route::put('profile', [ProfileController::class, 'profileUpdate'])->name('profile.update');
 
     // Security
-    // Route::get('profile/security', [ProfileController::class, 'passwordIndex'])->name('profile.password.index');
-    // Route::put('profile/security', [ProfileController::class, 'passwordUpdate'])->name('profile.password.update');
+    Route::get('profile/security', [ProfileController::class, 'securityIndex'])->name('profile.security.index');
+    Route::put('profile/security', [ProfileController::class, 'securityUpdate'])->name('profile.security.update');
 
     // Backups
     Route::resource('backup', BackupController::class)->only(['index', 'store', 'destroy']);

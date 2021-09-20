@@ -65,7 +65,7 @@
                                     class="dropdown-menu dropdown-menu-right">
                                     <a href="{{ route('app.profile.index') }}" tabindex="0" class="dropdown-item"><i class="pe-7s-user mr-2"></i>Profile</a>
 
-                                    <a href="#" tabindex="0" class="dropdown-item"><i class="pe-7s-lock mr-2"></i>Change Password</a>
+                                    <a href="{{ route('app.profile.security.index') }}" tabindex="0" class="dropdown-item"><i class="pe-7s-lock mr-2"></i>Change Password</a>
 
                                     <a href="#" tabindex="0" class="dropdown-item"><i class="pe-7s-tools mr-2"></i>Settings</a>
 
