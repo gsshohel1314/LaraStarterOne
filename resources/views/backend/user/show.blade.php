@@ -11,11 +11,11 @@
             <div>User <code>({{ $user->name }})</code> </div>
         </div>
         <div class="page-title-actions">
-            <a href="{{ route('app.users.edit', $user->id) }}" class="btn-shadow mr-3 btn btn-primary">
+            <a href="{{ route('app.user.edit', $user->id) }}" class="btn-shadow mr-3 btn btn-primary">
                 <i class="fa fa-edit"></i>
                 Edit
             </a>
-            <a href="{{ route('app.users.index') }}" class="btn-shadow mr-3 btn btn-danger">
+            <a href="{{ route('app.user.index') }}" class="btn-shadow mr-3 btn btn-danger">
                 <i class="fa fa-arrow-circle-left"></i>
                 Back to list
             </a>
@@ -27,7 +27,7 @@
     <div class="col-md-2">
         <div class="main-card mb-3 card">
             <div class="card-body">
-                <img src="{{ isset($user) ? $user->getFirstMediaUrl('image') : config('app.placeholderImage').'160.png' }}" class="img-fluid img-thumbnail" alt="User Image">
+                <img src="{{ $user->getFirstMediaUrl('image') != null ? $user->getFirstMediaUrl('image') : config('app.placeholderImage').'160.png' }}" class="img-fluid img-thumbnail" alt="User Image">
             </div>
         </div>
     </div>

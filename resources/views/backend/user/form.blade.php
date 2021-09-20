@@ -19,7 +19,7 @@
             <div>{{ isset($user) ? 'Edit' : 'Create' }} User</div>
         </div>
         <div class="page-title-actions">
-            <a href="{{ route('app.users.index') }}" class="btn-shadow mr-3 btn btn-primary">
+            <a href="{{ route('app.user.index') }}" class="btn-shadow mr-3 btn btn-primary">
                 <i class="fa fa-arrow-circle-left"></i>
                 Back to list
             </a>
@@ -28,7 +28,7 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <form id="userForm" action="{{ isset($user) ? route('app.users.update', $user->id) : route('app.users.store') }}" method="POST" enctype="multipart/form-data">
+        <form id="userForm" action="{{ isset($user) ? route('app.user.update', $user->id) : route('app.user.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @isset($user)
                 @method('PUT') 

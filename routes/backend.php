@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\BackupController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +23,21 @@ Route::group(['as'=>'app.', 'prefix'=>'app', 'middleware'=>['auth']] ,function()
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
     // Roles
-    Route::resource('roles', RoleController::class)->except(['show']);
+    Route::resource('role', RoleController::class)->except(['show']);
 
     // Users
-    Route::resource('users', UserController::class);
+    Route::resource('user', UserController::class);
+
+    // Profile
+    Route::get('profile', [ProfileController::class, 'profileIndex'])->name('profile.index');
+    Route::put('profile', [ProfileController::class, 'profileUpdate'])->name('profile.update');
+
+    // Security
+    // Route::get('profile/security', [ProfileController::class, 'passwordIndex'])->name('profile.password.index');
+    // Route::put('profile/security', [ProfileController::class, 'passwordUpdate'])->name('profile.password.update');
 
     // Backups
-    Route::resource('backups', BackupController::class)->only(['index', 'store', 'destroy']);
-    Route::get('backups/{file_name}', [BackupController::class, 'download'])->name('backups.download');
-    Route::delete('backups', [BackupController::class, 'clean'])->name('backups.clean');
+    Route::resource('backup', BackupController::class)->only(['index', 'store', 'destroy']);
+    Route::get('backup/{file_name}', [BackupController::class, 'download'])->name('backup.download');
+    Route::delete('backup', [BackupController::class, 'clean'])->name('backup.clean');
 });

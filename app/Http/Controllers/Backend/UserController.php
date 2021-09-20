@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         Gate::authorize('app.user.index');
         $users = User::all();
-        return view('backend.users.index', compact('users'));
+        return view('backend.user.index', compact('users'));
     }
 
     /**
@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         Gate::authorize('app.user.create');
         $roles = Role::all();
-        return view('backend.users.form', compact('roles'));
+        return view('backend.user.form', compact('roles'));
     }
 
     /**
@@ -66,7 +66,7 @@ class UserController extends Controller
         }
 
         notify()->success("User Added", "Success");
-        return redirect()->route('app.users.index');
+        return redirect()->route('app.user.index');
     }
 
     /**
@@ -78,7 +78,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         Gate::authorize('app.user.show');
-        return view('backend.users.show', compact('user'));
+        return view('backend.user.show', compact('user'));
     }
 
     /**
@@ -91,7 +91,7 @@ class UserController extends Controller
     {
         Gate::authorize('app.user.edit');
         $roles = Role::all();
-        return view('backend.users.form', compact('roles', 'user'));
+        return view('backend.user.form', compact('roles', 'user'));
     }
 
     /**
@@ -138,9 +138,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         Gate::authorize('app.user.delete');
-        // if(Storage::disk('public')->exists('user/'.$user->image)){
-        //     Storage::disk('public')->delete('user/'.$user->image);
-        // }
         $user->delete();
 
         notify()->success("User Deleted", "Success");

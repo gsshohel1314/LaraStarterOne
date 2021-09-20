@@ -44,13 +44,13 @@
 
                 <li class="app-sidebar__heading">Access Control</li>
                 <li>
-                    <a href="{{ route('app.roles.index') }}" class="{{ Request::is('app/roles*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('app.role.index') }}" class="{{ Request::is('app/role*') ? 'mm-active' : '' }}">
                         <i class="metismenu-icon pe-7s-check"></i>
                         Roles
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('app.users.index') }}" class="{{ Request::is('app/users*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('app.user.index') }}" class="{{ Request::is('app/user*') ? 'mm-active' : '' }}">
                         <i class="metismenu-icon pe-7s-users"></i>
                         Users
                     </a>
@@ -58,7 +58,7 @@
 
                 <li class="app-sidebar__heading">System</li>
                 <li>
-                    <a href="{{ route('app.backups.index') }}" class="{{ Request::is('app/backups*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('app.backup.index') }}" class="{{ Request::is('app/backup*') ? 'mm-active' : '' }}">
                         <i class="metismenu-icon pe-7s-cloud"></i>
                         Backups
                     </a>

@@ -20,7 +20,7 @@ class RoleController extends Controller
     {
         Gate::authorize('app.role.index');
         $roles = Role::all();
-        return view('backend.roles.index', compact('roles'));
+        return view('backend.role.index', compact('roles'));
     }
 
     /**
@@ -32,7 +32,7 @@ class RoleController extends Controller
     {
         Gate::authorize('app.role.create');
         $modules = Module::all();
-        return view('backend.roles.form', compact('modules'));
+        return view('backend.role.form', compact('modules'));
     }
 
     /**
@@ -56,7 +56,7 @@ class RoleController extends Controller
         ])->permissions()->sync($request->input('permissions'), []);
         
         notify()->success("Role Added","Success");
-        return redirect()->route('app.roles.index');
+        return redirect()->route('app.role.index');
     }
 
     /**
@@ -80,7 +80,7 @@ class RoleController extends Controller
     {
         Gate::authorize('app.role.edit');
         $modules = Module::all();
-        return view('backend.roles.form', compact('modules', 'role'));
+        return view('backend.role.form', compact('modules', 'role'));
     }
 
     /**
@@ -100,7 +100,7 @@ class RoleController extends Controller
         $role->permissions()->sync($request->input('permissions'));
 
         notify()->success("Role Updated","Success");
-        return redirect()->route('app.roles.index');
+        return redirect()->route('app.role.index');
     }
 
     /**

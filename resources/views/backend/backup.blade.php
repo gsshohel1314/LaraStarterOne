@@ -19,7 +19,7 @@
                 <i class="fa fa-trash"></i>
                 Cleanup old Backup
             </button>
-            <form id="clean-old-backup-form" method="POST" action="{{ route('app.backups.clean') }}" style="display: none">
+            <form id="clean-old-backup-form" method="POST" action="{{ route('app.backup.clean') }}" style="display: none">
                 @csrf
                 @method('DELETE')
             </form>
@@ -30,7 +30,7 @@
                 <i class="fa fa-plus-circle"></i>
                 Create New Backup
             </button>
-            <form id="new-backup-form" method="POST" action="{{ route('app.backups.store') }}" style="display: none">
+            <form id="new-backup-form" method="POST" action="{{ route('app.backup.store') }}" style="display: none">
                 @csrf
             </form>
         </div>
@@ -60,7 +60,7 @@
                                 <td class="text-center">{{ $backup['file_size'] }}</td>
                                 <td class="text-center">{{ $backup['created_at'] }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('app.backups.download', $backup['file_name']) }}" class="btn btn-info btn-sm">
+                                    <a href="{{ route('app.backup.download', $backup['file_name']) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-download"></i>
                                         <span>Download</span>
                                     </a>
@@ -71,7 +71,7 @@
                                         <i class="fas fa-trash-alt"></i>
                                         <span>Delete</span>
                                     </button>
-                                    <form id="delete-form-{{ $key }}" method="POST" action="{{ route('app.backups.destroy', $backup['file_name']) }}" style="display: none;">
+                                    <form id="delete-form-{{ $key }}" method="POST" action="{{ route('app.backup.destroy', $backup['file_name']) }}" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>

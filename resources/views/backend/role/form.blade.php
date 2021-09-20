@@ -13,7 +13,7 @@
             <div>{{ isset($role) ? 'Edit' : 'Create' }} Roles</div>
         </div>
         <div class="page-title-actions">
-            <a href="{{ route('app.roles.index') }}" class="btn-shadow mr-3 btn btn-primary">
+            <a href="{{ route('app.role.index') }}" class="btn-shadow mr-3 btn btn-primary">
                 <i class="fa fa-arrow-circle-left"></i>
                 Back to list
             </a>
@@ -23,7 +23,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="main-card mb-3 card">
-            <form id="roleForm" action="{{ isset($role) ? route('app.roles.update', $role->id) : route('app.roles.store') }}" method="POST" enctype="multipart/form-data">
+            <form id="roleForm" action="{{ isset($role) ? route('app.role.update', $role->id) : route('app.role.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @isset($role)
                     @method('PUT') 

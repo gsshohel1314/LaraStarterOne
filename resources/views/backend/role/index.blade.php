@@ -13,7 +13,7 @@
             <div>Roles</div>
         </div>
         <div class="page-title-actions">
-            <a href="{{ route('app.roles.create') }}" class="btn-shadow mr-3 btn btn-primary">
+            <a href="{{ route('app.role.create') }}" class="btn-shadow mr-3 btn btn-primary">
                 <i class="fa fa-plus-circle"></i>
                 Create Role
             </a>
@@ -48,7 +48,7 @@
                                 </td>
                                 <td class="text-center">{{ $role->updated_at->diffForHumans() }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('app.roles.edit', $role->id) }}" class="btn btn-info btn-sm">
+                                    <a href="{{ route('app.role.edit', $role->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-edit"></i>
                                         <span>Edit</span>
                                     </a>
@@ -60,7 +60,7 @@
                                             <i class="fas fa-trash-alt"></i>
                                             <span>Delete</span>
                                         </button>
-                                        <form id="delete-form-{{ $role->id }}" method="POST" action="{{ route('app.roles.destroy', $role->id) }}" style="display: none;">
+                                        <form id="delete-form-{{ $role->id }}" method="POST" action="{{ route('app.role.destroy', $role->id) }}" style="display: none;">
                                             @csrf
                                             @method('DELETE')
                                         </form>
