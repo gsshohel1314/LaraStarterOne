@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
+    // General settings logic start
     public function generalIndex(){
         return view('backend.setting.general');
     }
@@ -31,6 +32,7 @@ class SettingController extends Controller
         return back();
     }
 
+    // Appearance settings logic start
     public function appearanceIndex(){
         return view('backend.setting.appearance');
     }
@@ -66,5 +68,50 @@ class SettingController extends Controller
     // Delete old image function
     private function deleteOldLoge($path){
         Storage::disk('public')->delete($path);
+    }
+
+    // Mail settings logic start
+    public function mailIndex(){
+        return view('backend.setting.mail');
+    }
+
+    public function mailUpdate(Request $request){
+        $this->validate($request, [
+            'mail_mailer' => 'string|max:255',
+            'mail_host' => 'nullable|string|max:255',
+            'mail_port' => 'nullable|string|max:255',
+            'mail_username' => 'nullable|string|max:255',
+            'mail_password' => 'nullable|string|max:255',
+            'mail_encryption' => 'nullable|string|max:255',
+            'mail_from_address' => 'nullable|email|max:255',
+            'mail_from_name' => 'nullable|string|max:255',
+        ]);
+
+        Setting::updateOrCreate(['key' => 'mail_mailer'], ['value' => $request->get('mail_mailer')]);
+        Artisan::call("env:set MAIL_MAILER='".$request->get('mail_mailer')."'");
+
+        Setting::updateOrCreate(['key' => 'mail_host'], ['value' => $request->get('mail_host')]);
+        Artisan::call("env:set MAIL_HOST='".$request->get('mail_host')."'");
+
+        Setting::updateOrCreate(['key' => 'mail_port'], ['value' => $request->get('mail_port')]);
+        Artisan::call("env:set MAIL_PORT='".$request->get('mail_port')."'");
+
+        Setting::updateOrCreate(['key' => 'mail_username'], ['value' => $request->get('mail_username')]);
+        Artisan::call("env:set MAIL_USERNAME='".$request->get('mail_username')."'");
+
+        Setting::updateOrCreate(['key' => 'mail_password'], ['value' => $request->get('mail_password')]);
+        Artisan::call("env:set MAIL_PASSWORD='".$request->get('mail_password')."'");
+
+        Setting::updateOrCreate(['key' => 'mail_encryption'], ['value' => $request->get('mail_encryption')]);
+        Artisan::call("env:set MAIL_ENCRYPTION='".$request->get('mail_encryption')."'");
+
+        Setting::updateOrCreate(['key' => 'mail_from_address'], ['value' => $request->get('mail_from_address')]);
+        Artisan::call("env:set MAIL_FROM_ADDRESS='".$request->get('mail_from_address')."'");
+
+        Setting::updateOrCreate(['key' => 'mail_from_name'], ['value' => $request->get('mail_from_name')]);
+        Artisan::call("env:set MAIL_FROM_NAME='".$request->get('mail_from_name')."'");
+
+        notify()->success("Setting Updated","Success");
+        return back();
     }
 }

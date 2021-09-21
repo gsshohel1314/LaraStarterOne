@@ -51,5 +51,9 @@ Route::group(['as'=>'app.', 'prefix'=>'app', 'middleware'=>['auth']] ,function()
         // Appearance Setting
         Route::get('appearance', [SettingController::class ,'appearanceIndex'])->name('appearance.index');
         Route::put('appearance', [SettingController::class ,'appearanceUpdate'])->name('appearance.update');
+
+        // Mail Setting
+        Route::get('mail', [SettingController::class ,'mailIndex'])->name('mail.index');
+        Route::put('mail', [SettingController::class ,'mailUpdate'])->name('mail.update');
     });
 });
