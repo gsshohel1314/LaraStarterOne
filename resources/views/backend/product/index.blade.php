@@ -7,15 +7,15 @@
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="pe-7s-users icon-gradient bg-mean-fruit">
+                <i class="pe-7s-keypad icon-gradient bg-mean-fruit">
                 </i>
             </div>
-            <div>Users</div>
+            <div>Products</div>
         </div>
         <div class="page-title-actions">
-            <a href="{{ route('app.user.create') }}" class="btn-shadow mr-3 btn btn-primary">
+            <a href="{{ route('app.product.create') }}" class="btn-shadow mr-3 btn btn-primary">
                 <i class="fa fa-plus-circle"></i>
-                Create User
+                Create Product
             </a>
         </div>
     </div>
@@ -28,15 +28,17 @@
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
-                            <th>Name</th>
-                            <th class="text-center">Email</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Cost Price</th>
+                            <th class="text-center">Retail Price</th>
+                            {{-- <th class="text-center">Description</th> --}}
                             <th class="text-center">Status</th>
                             <th class="text-center">Joined At</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $key => $user)
+                        @foreach ($products as $key => $product)
                             <tr>
                                 <td class="text-center text-muted">{{ $key + 1 }}</td>
                                 <td>
@@ -45,50 +47,45 @@
                                             <div class="widget-content-left mr-3">
                                                 <div class="widget-content-left">
                                                     <img width="40" height="40" class="rounded-circle" 
-                                                    src="{{ $user->getFirstMediaUrl('image') != null ? $user->getFirstMediaUrl('image') : config('app.placeholderImage').'160.png' }}" alt="User Image">
+                                                    src="{{ $product->getFirstMediaUrl('image') != null ? $product->getFirstMediaUrl('image') : config('app.placeholderImage').'160.png' }}" alt="Product Image">
                                                 </div>
                                             </div>
                                             <div class="widget-content-left flex2">
-                                                <div class="widget-heading"> {{ $user->name }} </div>
-                                                <div class="widget-subheading opacity-7">
-                                                    @if ($user->role)
-                                                        <span class="badge badge-info">{{ $user->role->name }}</span>
-                                                    @else
-                                                        <span class="badge badge-danger">No role found.</span>    
-                                                    @endif
-                                                </div>
+                                                <div class="widget-heading"> {{ $product->name }} </div>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-center">{{ $user->email }}</td>
+                                <td class="text-center">{{ $product->cost_price }}</td>
+                                <td class="text-center">{{ $product->retail_price }}</td>
+                                {{-- <td class="text-center">{{ Str::limit($product->description, 20) }}</td> --}}
                                 <td class="text-center">
-                                    @if ($user->status == true)
+                                    @if ($product->status == true)
                                         <span class="badge badge-info">Active</span>
                                     @else
                                         <span class="badge badge-danger">Inactive</span>
                                     @endif
                                 </td>
-                                <td class="text-center">{{ $user->created_at->diffForHumans() }}</td>
+                                <td class="text-center">{{ $product->created_at->diffForHumans() }}</td>
 
                                 <td class="text-center">
-                                    <a href="{{ route('app.user.show', $user->id) }}"class="btn btn-info btn-sm">
+                                    <a href="{{ route('app.product.show', $product->id) }}"class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i>
                                         <span>Show</span>
                                     </a>
 
-                                    <a href="{{ route('app.user.edit', $user->id) }}" class="btn btn-info btn-sm">
+                                    <a href="{{ route('app.product.edit', $product->id) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-edit"></i>
                                         <span>Edit</span>
                                     </a>
                                     
                                     <button type="button" class="btn btn-danger btn-sm"
-                                    onclick="deleteData({{ $user->id }})"
+                                    onclick="deleteData({{ $product->id }})"
                                     >
                                         <i class="fas fa-trash-alt"></i>
                                         <span>Delete</span>
                                     </button>
-                                    <form id="delete-form-{{ $user->id }}" method="POST" action="{{ route('app.user.destroy', $user->id) }}" style="display: none;">
+                                    <form id="delete-form-{{ $product->id }}" method="POST" action="{{ route('app.product.destroy', $product->id) }}" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>

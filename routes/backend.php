@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\StockController;
 use App\Http\Controllers\Backend\BackupController;
-use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,4 +59,24 @@ Route::group(['as'=>'app.', 'prefix'=>'app', 'middleware'=>['auth']] ,function()
         Route::get('mail', [SettingController::class ,'mailIndex'])->name('mail.index');
         Route::put('mail', [SettingController::class ,'mailUpdate'])->name('mail.update');
     });
+
+    // Categories
+    Route::resource('category', CategoryController::class)->except(['show']);
+
+    // Products
+    Route::resource('product', ProductController::class);
+
+    // Stocks
+    Route::resource('stock', StockController::class);
+    Route::get('findProductName',[StockController::class, 'findProductName']);
+    // Route::get('findPrice',[StockController::class, 'findPrice']);
+
+    // Manage Stock
+    Route::get('manage/stock', [StockController::class, 'manageStockIndex'])->name('manage.stock.index');
+    Route::get('findProductQuantity',[StockController::class, 'findProductQuantity']);
+    Route::post('manage/stock', [StockController::class, 'manageStockStore'])->name('manage.stock.store');
+
+    // Stock History
+    Route::get('manage/stock/history', [StockController::class, 'stockHistoryIndex'])->name('manage.stock.history.index');
+
 });

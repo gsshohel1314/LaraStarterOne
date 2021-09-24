@@ -56,6 +56,49 @@
                     </a>
                 </li>
 
+                <li class="app-sidebar__heading">Components</li>
+                <li>
+                    <a href="{{ route('app.category.index') }}" class="{{ Request::is('app/category*') ? 'mm-active' : '' }}">
+                        <i class="metismenu-icon pe-7s-diskette"></i>
+                        Categories
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('app.product.index') }}" class="{{ Request::is('app/product*') ? 'mm-active' : '' }}">
+                        <i class="metismenu-icon pe-7s-keypad"></i>
+                        Products
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-server"></i>
+                        Stocks
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('app.stock.create') }}" class="{{ Request::is('app/stock/create') ? 'mm-active' : '' }}">
+                                <i class="metismenu-icon"></i>
+                                Add Stock
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('app.manage.stock.index') }}" class="{{ Request::is('app/manage/stock') ? 'mm-active' : '' }}">
+                                <i class="metismenu-icon"></i>
+                                Stock Manage
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('app.manage.stock.history.index') }}" class="{{ Request::is('app/manage/stock/history') ? 'mm-active' : '' }}">
+                                <i class="metismenu-icon"></i>
+                                Stock Manage History
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="app-sidebar__heading">System</li>
                 <li>
                     <a href="{{ route('app.backup.index') }}" class="{{ Request::is('app/backup*') ? 'mm-active' : '' }}">
